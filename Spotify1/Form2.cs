@@ -15,6 +15,10 @@ namespace Spotify1
 {
     public partial class Form2 : Form
     {
+        Requester requester;
+        dynamic playlistsObject;
+        dynamic playlistSongsObject;
+
         public Form2()
         {
             InitializeComponent();
@@ -50,11 +54,11 @@ namespace Spotify1
         {
             Program.GlobalAccessToken = await GetTokenAsync();
 
-            Requester requester = new Requester();
+            requester = new Requester();
 
             string currentUserJson = await requester.MakeRequestAsync("https://api.spotify.com/v1/me");
 
-            System.Console.WriteLine(currentUserJson);
+         //   System.Console.WriteLine(currentUserJson);
 
             dynamic currentUserObject = JsonConvert.DeserializeObject(currentUserJson);
 
@@ -63,9 +67,9 @@ namespace Spotify1
 
             string playlistsJson = await requester.MakeRequestAsync(userUrl + "/playlists?limit=50");
 
-            System.Console.WriteLine(playlistsJson);
+         //   System.Console.WriteLine(playlistsJson);
 
-             dynamic playlistsObject = JsonConvert.DeserializeObject(playlistsJson);
+            playlistsObject = JsonConvert.DeserializeObject(playlistsJson);
 
             lstPlaylists.Items.Clear();
 
@@ -73,7 +77,33 @@ namespace Spotify1
             {
                 lstPlaylists.Items.Add(playlist.name);
             }
-           
+
+
+        }
+
+        private async void lstPlaylists_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            lstViewPlaylist.Items.Clear();
+
+            int selectedIndex = lstPlaylists.SelectedIndex;
+
+            var playlist = (playlistsObject.items[selectedIndex]);
+
+            lblPlaylistName.Text = playlist.name;
+
+            string playlistSongsJson = await requester.MakeRequestAsync($"https://api.spotify.com/v1/playlists/{playlist.id}/tracks");
+
+            playlistSongsObject = JsonConvert.DeserializeObject(playlistSongsJson);
+
+            
+            for(int i=0; i<(int)playlist.tracks.total; i++)
+            {
+                lstViewPlaylist.Items.Add(playlistSongsObject.items[i].track.name);
+            }
+
+            
+
 
         }
     }
