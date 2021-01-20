@@ -18,6 +18,7 @@ namespace Spotify1
         Requester requester;
         dynamic playlistsObject;
         dynamic playlistSongsObject;
+        dynamic trackDetails;
 
         public Form2()
         {
@@ -106,5 +107,34 @@ namespace Spotify1
 
 
         }
+
+        private async void lstViewPlaylist_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int selectedIndex = lstViewPlaylist.SelectedIndex;
+
+            string trackName = (string)playlistSongsObject.items[selectedIndex].track.name;
+
+            // System.Console.WriteLine((string)track.name);
+
+            lblSongName.Text = (string)trackName;
+
+            string trackDetailsJson = await requester.MakeRequestAsync($"https://api.spotify.com/v1/audio-features/{playlistSongsObject.items[selectedIndex].track.id}");
+
+            trackDetails = JsonConvert.DeserializeObject(trackDetailsJson);
+
+            lblEnergy.Text = trackDetails.energy;
+            lblLiveness.Text = trackDetails.liveness;
+            lblSpeechiness.Text = trackDetails.speechiness;
+            lblDanceability.Text = trackDetails.danceability;
+            lblInstrumentalness.Text = trackDetails.instrumentalness;
+            lblValence.Text = trackDetails.valence;
+            lblAcousticness.Text = trackDetails.acousticness;
+
+            lblTempo.Text = trackDetails.tempo;
+            lblTimeSignature.Text = trackDetails.time_signature;
+            lblLoudness.Text = trackDetails.loudness;
+        }
+
+        
     }
 }
