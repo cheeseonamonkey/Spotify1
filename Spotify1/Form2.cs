@@ -120,6 +120,11 @@ namespace Spotify1
 
             string trackDetailsJson = await requester.MakeRequestAsync($"https://api.spotify.com/v1/audio-features/{playlistSongsObject.items[selectedIndex].track.id}");
 
+            FillTrackDetails(trackDetailsJson);
+        }
+
+        public async void FillTrackDetails(string trackDetailsJson)
+        {
             trackDetails = JsonConvert.DeserializeObject(trackDetailsJson);
 
             lblEnergy.Text = trackDetails.energy;
@@ -135,6 +140,23 @@ namespace Spotify1
             lblLoudness.Text = trackDetails.loudness;
         }
 
-        
+        private async void txtSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                string searchResultsJson = await requester.MakeRequestAsync($"https://api.spotify.com/v1/search?q={txtSearch.Text}&type=track&limit=1");
+                dynamic searchResults = JsonConvert.DeserializeObject(searchResultsJson);
+
+
+                string id = (string) searchResults.tracks.items[0].id;
+
+                string trackDetailsJson = await requester.MakeRequestAsync($"https://api.spotify.com/v1/audio-features/{id}");
+
+                FillTrackDetails(trackDetailsJson);
+
+
+
+            }
+        }
     }
 }
