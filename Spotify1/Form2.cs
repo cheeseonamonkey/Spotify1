@@ -123,6 +123,8 @@ namespace Spotify1
             FillTrackDetails(trackDetailsJson);
         }
 
+
+
         public async void FillTrackDetails(string trackDetailsJson)
         {
             trackDetails = JsonConvert.DeserializeObject(trackDetailsJson);
@@ -162,6 +164,20 @@ namespace Spotify1
 
 
             }
+        }
+
+        private async void btnGetSimilar_Click(object sender, EventArgs e)
+        {
+            string newSongJson = await requester.MakeRequestAsync($"https://api.spotify.com/v1/recommendations?limit=1&seed_tracks={trackDetails.id}");
+            dynamic newSong = JsonConvert.DeserializeObject(newSongJson);
+
+            //you are here =============================
+
+            string trackDetailsJson = await requester.MakeRequestAsync($"https://api.spotify.com/v1/audio-features/{newSong.id}");
+            FillTrackDetails(trackDetailsJson);
+
+            Console.WriteLine(newSongJson);
+
         }
     }
 }

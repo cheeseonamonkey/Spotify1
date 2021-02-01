@@ -60,9 +60,9 @@ namespace Spotify1
             this.label12 = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnGetSimilar = new System.Windows.Forms.Button();
+            this.btnGetSimilarObscure = new System.Windows.Forms.Button();
+            this.btnGetSimilarInstrumental = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -390,44 +390,45 @@ namespace Spotify1
             this.label4.TabIndex = 10;
             this.label4.Text = "Search:";
             // 
-            // button1
+            // btnGetSimilar
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(593, 76);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(129, 45);
-            this.button1.TabIndex = 11;
-            this.button1.Text = "Get similar song";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnGetSimilar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGetSimilar.Location = new System.Drawing.Point(593, 76);
+            this.btnGetSimilar.Name = "btnGetSimilar";
+            this.btnGetSimilar.Size = new System.Drawing.Size(129, 45);
+            this.btnGetSimilar.TabIndex = 11;
+            this.btnGetSimilar.Text = "Get similar song";
+            this.btnGetSimilar.UseVisualStyleBackColor = true;
+            this.btnGetSimilar.Click += new System.EventHandler(this.btnGetSimilar_Click);
             // 
-            // button2
+            // btnGetSimilarObscure
             // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(593, 142);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(129, 45);
-            this.button2.TabIndex = 12;
-            this.button2.Text = "Get similar obscure song";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnGetSimilarObscure.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGetSimilarObscure.Location = new System.Drawing.Point(593, 142);
+            this.btnGetSimilarObscure.Name = "btnGetSimilarObscure";
+            this.btnGetSimilarObscure.Size = new System.Drawing.Size(129, 45);
+            this.btnGetSimilarObscure.TabIndex = 12;
+            this.btnGetSimilarObscure.Text = "Get similar obscure song";
+            this.btnGetSimilarObscure.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // btnGetSimilarInstrumental
             // 
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(593, 205);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(129, 45);
-            this.button3.TabIndex = 13;
-            this.button3.Text = "Get similar instrumental song";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnGetSimilarInstrumental.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGetSimilarInstrumental.Location = new System.Drawing.Point(593, 205);
+            this.btnGetSimilarInstrumental.Name = "btnGetSimilarInstrumental";
+            this.btnGetSimilarInstrumental.Size = new System.Drawing.Size(129, 45);
+            this.btnGetSimilarInstrumental.TabIndex = 13;
+            this.btnGetSimilarInstrumental.Text = "Get similar instrumental song";
+            this.btnGetSimilarInstrumental.UseVisualStyleBackColor = true;
             // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 499);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnGetSimilarInstrumental);
+            this.Controls.Add(this.btnGetSimilarObscure);
+            this.Controls.Add(this.btnGetSimilar);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.groupBox2);
@@ -484,8 +485,8 @@ namespace Spotify1
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnGetSimilar;
+        private System.Windows.Forms.Button btnGetSimilarObscure;
+        private System.Windows.Forms.Button btnGetSimilarInstrumental;
     }
 }
