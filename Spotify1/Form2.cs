@@ -149,8 +149,13 @@ namespace Spotify1
 
 
                 string id = (string) searchResults.tracks.items[0].id;
+                string trackName = (string)searchResults.tracks.items[0].name;
+
+                lblSongName.Text = (string)trackName;
 
                 string trackDetailsJson = await requester.MakeRequestAsync($"https://api.spotify.com/v1/audio-features/{id}");
+
+                Console.WriteLine(trackDetailsJson);
 
                 FillTrackDetails(trackDetailsJson);
 

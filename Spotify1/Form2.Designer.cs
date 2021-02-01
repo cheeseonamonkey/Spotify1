@@ -290,7 +290,7 @@ namespace Spotify1
             // 
             this.lblSongName.AutoSize = true;
             this.lblSongName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSongName.Location = new System.Drawing.Point(430, 350);
+            this.lblSongName.Location = new System.Drawing.Point(397, 56);
             this.lblSongName.Name = "lblSongName";
             this.lblSongName.Size = new System.Drawing.Size(0, 17);
             this.lblSongName.TabIndex = 7;
